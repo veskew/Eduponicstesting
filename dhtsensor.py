@@ -117,11 +117,14 @@ def read_dht11_dat():
 
 def main():
     print("Raspberry Pi wiringPi DHT11 Temperature test program\n")
+    prev_humidity, prev_temp = -1, -1000
     while True:
         result = read_dht11_dat()
         if result:
             humidity, temperature = result
-            print("humidity: %s %%,  Temperature: %s C" % (humidity, temperature))
+            if humidity != prev_humidity or temperature != prev_temp:
+                print("humidity: %s %%,  Temperature: %s C" % (humidity, temperature))
+            humidity, temperature = prev_humidity, prev_temp
         time.sleep(1)
 
 
