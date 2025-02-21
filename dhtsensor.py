@@ -124,7 +124,7 @@ def main():
             humidity, temperature = result
             if humidity != prev_humidity or temperature != prev_temp:
                 print("humidity: %s %%,  Temperature: %s C" % (humidity, temperature))
-            humidity, temperature = prev_humidity, prev_temp
+            prev_humidity, prev_temp = humidity, temperature
         time.sleep(1)
 
 
